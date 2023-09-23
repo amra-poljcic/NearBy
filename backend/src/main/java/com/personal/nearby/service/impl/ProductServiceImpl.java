@@ -7,10 +7,13 @@ import com.personal.nearby.model.Product;
 import com.personal.nearby.repository.ProductRepository;
 import com.personal.nearby.service.api.PriceHistoryService;
 import com.personal.nearby.service.api.ProductService;
+import org.locationtech.jts.geom.Point;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -25,8 +28,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> list(final Pageable pageable) {
-        return productRepository.findAll(pageable).map(ProductEntity::toDomainModel);
+    public Page<Product> list(final String name,
+                              final Set<UUID> categoryIds,
+                              final Double minPrice,
+                              final Double maxPrice,
+                              final Point gpsCoordinates,
+                              final Pageable pageable) {
+        return productRepository.findAll(
+                        name,
+                        categoryIds == null ? Collections.emptySet() : categoryIds,
+                        minPrice,
+                        maxPrice,
+                        gpsCoordinates,
+                        pageable
+                )
+                .map(ProductEntity::toDomainModel);
     }
 
     @Override

@@ -3,3 +3,8 @@ spring:
         url: jdbc:postgresql://localhost:5432/nearby
         username: postgres
         password: postgres
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
+                show_sql: true

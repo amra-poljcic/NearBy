@@ -1,4 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS postgis;
 
 CREATE TABLE category (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -12,12 +13,14 @@ CREATE TABLE product (
     description TEXT,
     category_id UUID NOT NULL,
     price NUMERIC NOT NULL,
-    gps_coordinates TEXT NOT NULL,
+    gps_coordinates geometry(Point, 4326) NOT NULL,
     views BIGINT NOT NULL DEFAULT 0,
     image TEXT,
     CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category (id)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE INDEX product_gps_coordinates_gist ON product USING gist(gps_coordinates);
 
 CREATE TABLE price_history (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),

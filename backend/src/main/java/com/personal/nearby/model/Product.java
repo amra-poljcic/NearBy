@@ -1,5 +1,7 @@
 package com.personal.nearby.model;
 
+import org.locationtech.jts.geom.Point;
+
 import java.util.UUID;
 
 public class Product {
@@ -8,7 +10,7 @@ public class Product {
     private final String description;
     private final Category category;
     private final double price;
-    private final String gpsCoordinates;
+    private final Point gpsCoordinates;
     private final long views;
     private final String image;
 
@@ -16,7 +18,7 @@ public class Product {
                    final String description,
                    final Category category,
                    final double price,
-                   final String gpsCoordinates,
+                   final Point gpsCoordinates,
                    final String image) {
         this(null, name, description, category, price, gpsCoordinates, 0, image);
     }
@@ -26,7 +28,7 @@ public class Product {
                    final String description,
                    final Category category,
                    final double price,
-                   final String gpsCoordinates,
+                   final Point gpsCoordinates,
                    final long views,
                    final String image) {
         this.id = id;
@@ -59,7 +61,7 @@ public class Product {
         return price;
     }
 
-    public String getGpsCoordinates() {
+    public Point getGpsCoordinates() {
         return gpsCoordinates;
     }
 

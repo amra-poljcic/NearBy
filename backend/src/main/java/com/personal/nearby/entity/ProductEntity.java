@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import org.locationtech.jts.geom.Point;
 
 import java.util.UUID;
 
@@ -33,7 +34,7 @@ public class ProductEntity {
     private double price;
 
     @Column(name = "gpsCoordinates", nullable = false)
-    private String gpsCoordinates;
+    private Point gpsCoordinates;
 
     @Column(name = "views", nullable = false)
     private long views;
@@ -49,7 +50,7 @@ public class ProductEntity {
                          final String description,
                          final CategoryEntity category,
                          final double price,
-                         final String gpsCoordinates,
+                         final Point gpsCoordinates,
                          final long views,
                          final String image) {
         this.id = id;
@@ -119,11 +120,11 @@ public class ProductEntity {
         this.price = price;
     }
 
-    public String getGpsCoordinates() {
+    public Point getGpsCoordinates() {
         return gpsCoordinates;
     }
 
-    public void setGpsCoordinates(final String gpsCoordinates) {
+    public void setGpsCoordinates(final Point gpsCoordinates) {
         this.gpsCoordinates = gpsCoordinates;
     }
 

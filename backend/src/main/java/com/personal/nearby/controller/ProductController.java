@@ -1,5 +1,6 @@
 package com.personal.nearby.controller;
 
+import com.personal.nearby.controller.params.ProductParams;
 import com.personal.nearby.model.Category;
 import com.personal.nearby.model.Product;
 import com.personal.nearby.request.ProductRequest;
@@ -30,8 +31,15 @@ public class ProductController {
     }
 
     @GetMapping
-    public Page<Product> list(final Pageable pageable) {
-        return productService.list(pageable);
+    public Page<Product> list(final ProductParams params, final Pageable pageable) {
+        return productService.list(
+                params.name(),
+                params.categoryIds(),
+                params.minPrice(),
+                params.maxPrice(),
+                params.gpsCoordinates(),
+                pageable
+        );
     }
 
     @GetMapping("/{id}")
