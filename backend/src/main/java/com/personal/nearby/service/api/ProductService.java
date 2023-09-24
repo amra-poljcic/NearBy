@@ -14,6 +14,7 @@ public interface ProductService {
                        final Double minPrice,
                        final Double maxPrice,
                        final Point gpsCoordinates,
+                       final Set<UUID> excludeIds,
                        final Pageable pageable);
 
     Product getById(final UUID id);

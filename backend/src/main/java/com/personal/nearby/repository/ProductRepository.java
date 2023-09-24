@@ -22,7 +22,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, UUID> {
                      AND (:categoryIds IS NULL OR category_id IN :categoryIds)
                      AND (:priceMin IS NULL OR price >= :priceMin)
                      AND (:priceMax IS NULL OR price <= :priceMax)
-                   ORDER BY CASE WHEN CAST(:gpsCoordinates AS geometry) IS NOT NULL THEN gps_coordinates <-> :gpsCoordinates ELSE 0 END
+                     AND (:excludeIds IS NULL OR id NOT IN :excludeIds)
+                   ORDER BY CASE WHEN CAST(:gpsCoordinates AS geography) IS NOT NULL THEN gps_coordinates <-> :gpsCoordinates ELSE 0 END
                ) sorted_product
             """,
             countQuery = """
@@ -32,12 +33,14 @@ public interface ProductRepository extends JpaRepository<ProductEntity, UUID> {
                    AND (:categoryIds IS NULL OR category_id IN :categoryIds)
                    AND (:priceMin IS NULL OR price >= :priceMin)
                    AND (:priceMax IS NULL OR price <= :priceMax)
-                   AND :gpsCoordinates = :gpsCoordinates
+                   AND (:excludeIds IS NULL OR id NOT IN :excludeIds)
+                   AND (CAST(:gpsCoordinates AS geography) IS NULL OR CAST(:gpsCoordinates AS geography) IS NOT NULL)
             """, nativeQuery = true)
     Page<ProductEntity> findAll(final String name,
                                 final Set<UUID> categoryIds,
                                 final Double priceMin,
                                 final Double priceMax,
                                 final Point gpsCoordinates,
+                                final Set<UUID> excludeIds,
                                 final Pageable pageable);
 }

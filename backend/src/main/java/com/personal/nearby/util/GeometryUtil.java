@@ -9,6 +9,6 @@ public class GeometryUtil {
     private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory(new PrecisionModel(), 4326);
 
     public static Point createPoint(final double lat, final double lon) {
-        return GEOMETRY_FACTORY.createPoint(new Coordinate(lat, lon));
+        return GEOMETRY_FACTORY.createPoint(new Coordinate(lon, lat));
     }
 }

@@ -3,8 +3,17 @@ spring:
         url: jdbc:postgresql://localhost:5432/nearby
         username: postgres
         password: postgres
+    data:
+        web:
+            pageable:
+                one-indexed-parameters: true
     jpa:
         properties:
             hibernate:
                 dialect: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
                 show_sql: true
+properties:
+    external:
+        auth0:
+            audience: ${AUTH0_AUDIENCE}
+            issuer: https://${AUTH0_DOMAIN}/

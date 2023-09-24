@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public record ProductParams(String name, Set<UUID> categoryIds, Double minPrice, Double maxPrice, Double lat,
-                            Double lon) {
+                            Double lon, Set<UUID> excludeIds) {
 
     public Point gpsCoordinates() {
         if (lat == null || lon == null) {

@@ -33,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
                               final Double minPrice,
                               final Double maxPrice,
                               final Point gpsCoordinates,
+                              final Set<UUID> excludeIds,
                               final Pageable pageable) {
         return productRepository.findAll(
                         name,
@@ -40,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
                         minPrice,
                         maxPrice,
                         gpsCoordinates,
+                        excludeIds == null ? Collections.emptySet() : excludeIds,
                         pageable
                 )
                 .map(ProductEntity::toDomainModel);

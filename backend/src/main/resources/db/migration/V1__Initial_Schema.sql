@@ -13,7 +13,7 @@ CREATE TABLE product (
     description TEXT,
     category_id UUID NOT NULL,
     price NUMERIC NOT NULL,
-    gps_coordinates geometry(Point, 4326) NOT NULL,
+    gps_coordinates geography(Point, 4326) NOT NULL,
     views BIGINT NOT NULL DEFAULT 0,
     image TEXT,
     CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category (id)
