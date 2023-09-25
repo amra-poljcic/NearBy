@@ -1,6 +1,6 @@
-import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import L from 'leaflet'
+import icon from 'leaflet/dist/images/marker-icon.png'
+import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Image from 'react-bootstrap/Image'
@@ -16,9 +16,9 @@ import 'leaflet/dist/leaflet.css'
 const DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow
-});
+})
 
-L.Marker.prototype.options.icon = DefaultIcon;
+L.Marker.prototype.options.icon = DefaultIcon
 
 export const singleProductLoader = async (productId, params) => {
     const product = await getProductById(productId)
@@ -53,7 +53,7 @@ export const SingleProduct = () => {
             </Breadcrumb>
             <div className="d-flex flex-column gap-3">
                 <div className="d-flex gap-3">
-                    <Image style={ { minWidth: 300 } } src={ product?.image } />
+                    <Image style={ { width: 350, height: 300, objectFit: 'cover' } } src={ product?.image } />
                     <div style={ { maxWidth: 600 } } className="d-flex flex-column justify-content-between">
                         <div>
                             <h1>{ product?.name }</h1>
