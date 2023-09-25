@@ -1,3 +1,6 @@
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Image from 'react-bootstrap/Image'
@@ -9,6 +12,13 @@ import { formatDate } from '../../utils/dateUtils.js'
 import { getProductById, listProductPriceHistory, listProducts } from '../../api/product.js'
 import { FaArrowTrendUp, FaArrowTrendDown, FaEye } from 'react-icons/fa6'
 import 'leaflet/dist/leaflet.css'
+
+const DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export const singleProductLoader = async (productId, params) => {
     const product = await getProductById(productId)
