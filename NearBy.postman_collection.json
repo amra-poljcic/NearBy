@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "02afa821-1242-4ef6-9b2c-b76233ad04d9",
+		"name": "NearBy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/product",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "mouse",
+									"disabled": true
+								},
+								{
+									"key": "categoryIds",
+									"value": "ac7312bd-b74c-4117-bfbe-8db80da8f455",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "200",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "500",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "price,asc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Automobili update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/product/a97ea2b8-26cf-453e-8237-6448a648bfdb",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"a97ea2b8-26cf-453e-8237-6448a648bfdb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List price history",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Automobili update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/product/a97ea2b8-26cf-453e-8237-6448a648bfdb/price-history",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"a97ea2b8-26cf-453e-8237-6448a648bfdb",
+								"price-history"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "timestamp",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add product",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const ids = [\"83287a68-f9d8-440d-8ca2-54af93c06d9b\",\"93d32a89-28ff-483a-a93c-05e032b4a824\",\"0a913ca9-fe1a-4859-8b86-ca3380b40995\",\"dfc4b447-37b0-430a-ae7e-39cdb89689ef\",\"c8401c6c-2cef-4f07-bb89-44c99029bbdc\",\"b00dc482-7a8d-44e9-8857-9967f126480b\",\"2bb4d4b7-d6cf-4cdd-aa01-f2a9510a8bb1\",\"9a376b91-df7c-460b-b258-2f0f3c90d693\",\"7f89242f-3dbd-42b6-84fa-ccc8fef6ffa3\",\"79237cf7-be77-46ef-aebd-84e8151d756c\",\"ab8538a2-d900-4ca7-959b-f6df6530e229\"]\r",
+									"\r",
+									"pm.globals.set(\"randomCategoryId\", ids[Math.floor(Math.random()*ids.length)])\r",
+									"pm.environment.set(\"random_number\", _.random(100, 300))\r",
+									"pm.environment.set(\"random_number_2\", _.random(100, 300))\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Inhfa2FNZmEyTzJmTjFJU0NPdkR1UiJ9.eyJpc3MiOiJodHRwczovL2Rldi03aXlwazZhOGcyZmhoODBtLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NTEwNmExZjcwZDNjZmU3ZWM4MmQxNzciLCJhdWQiOlsiaHR0cHM6Ly9uZWFyLWJ5LWFwaSIsImh0dHBzOi8vZGV2LTdpeXBrNmE4ZzJmaGg4MG0udXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY5NTU5NDM2MCwiZXhwIjoxNjk1NjgwNzYwLCJhenAiOiJmOHowWTdGTVgxOUhLd3ZkQXVhdTZJTVQ5bG1jbnJWTCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJjYXRlZ29yeTpyZWFkIiwiY2F0ZWdvcnk6d3JpdGUiLCJwcm9kdWN0OnJlYWQiLCJwcm9kdWN0OndyaXRlIl19.cr8OkE3k2ZEu3n7qsnOR6ZDRsyI2Zx1vzp9SrxOojm34gszfKxy2r4-9wmkkhQExWjRgoYSnhcNU4HOLW2rKaN0oVBvQQCTael0tqBgZrYlhYZhpXUq9JXosHaJifYCfJxkdSORrRSUVMyRzMh7HrrCCwF9aBQwEdZ9l7ZhxitiGEnOSr3PfOVuR8eMgeDpTnC2la9g5QEDqGW_Hh-YMejZp6x93_4ANE4jFDvN4FIiciiFKXoKyIDtIOows7pOIiSRkCSfsA_m9rBYAGqhFYEbP9Wt_mgOWpX6NGesvK3O1qiR0B5uoKePsadS6e40m7690vuafpJnmTV7NO7IaNg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomProduct}}\",\r\n    \"description\":  \"{{$randomLoremSentences}}\",\r\n    \"categoryId\": \"{{randomCategoryId}}\",\r\n    \"price\":  \"{{$randomPrice}}\",\r\n    \"lat\":  {{$randomLatitude}},\r\n    \"lon\":  {{$randomLongitude}},\r\n    \"image\":  \"https://random.imagecdn.app/{{random_number}}/{{random_number_2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/product",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"a97ea2b8-26cf-453e-8237-6448a648bfdb\",\r\n    \"name\": \"Cheese\",\r\n    \"description\": \"Rerum fugit ut. Ut consectetur qui vel animi reiciendis quo. Sit qui autem at distinctio suscipit veritatis ut. Iure veritatis praesentium aspernatur. Ut quo natus occaecati cupiditate officiis dolor.\",\r\n    \"categoryId\": \"722ba72d-3a19-4f34-ab7c-3db70ee2d9e8\",\r\n    \"price\": 100.93,\r\n    \"lat\": 23,\r\n    \"lon\":56,\r\n    \"views\": 6,\r\n    \"image\": \"https://random.imagecdn.app/201/200\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/product/a97ea2b8-26cf-453e-8237-6448a648bfdb",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"a97ea2b8-26cf-453e-8237-6448a648bfdb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Automobili update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/product/a97ea2b8-26cf-453e-8237-6448a648bfdb",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"a97ea2b8-26cf-453e-8237-6448a648bfdb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "List categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/category?sort=name,desc",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"category"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Inhfa2FNZmEyTzJmTjFJU0NPdkR1UiJ9.eyJpc3MiOiJodHRwczovL2Rldi03aXlwazZhOGcyZmhoODBtLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NTEwNmExZjcwZDNjZmU3ZWM4MmQxNzciLCJhdWQiOlsiaHR0cHM6Ly9uZWFyLWJ5LWFwaSIsImh0dHBzOi8vZGV2LTdpeXBrNmE4ZzJmaGg4MG0udXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY5NTU5NDM2MCwiZXhwIjoxNjk1NjgwNzYwLCJhenAiOiJmOHowWTdGTVgxOUhLd3ZkQXVhdTZJTVQ5bG1jbnJWTCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJjYXRlZ29yeTpyZWFkIiwiY2F0ZWdvcnk6d3JpdGUiLCJwcm9kdWN0OnJlYWQiLCJwcm9kdWN0OndyaXRlIl19.cr8OkE3k2ZEu3n7qsnOR6ZDRsyI2Zx1vzp9SrxOojm34gszfKxy2r4-9wmkkhQExWjRgoYSnhcNU4HOLW2rKaN0oVBvQQCTael0tqBgZrYlhYZhpXUq9JXosHaJifYCfJxkdSORrRSUVMyRzMh7HrrCCwF9aBQwEdZ9l7ZhxitiGEnOSr3PfOVuR8eMgeDpTnC2la9g5QEDqGW_Hh-YMejZp6x93_4ANE4jFDvN4FIiciiFKXoKyIDtIOows7pOIiSRkCSfsA_m9rBYAGqhFYEbP9Wt_mgOWpX6NGesvK3O1qiR0B5uoKePsadS6e40m7690vuafpJnmTV7NO7IaNg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Books\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/category",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Automobili update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/category/00f10b90-94fe-4aad-8f1e-a57976ed45db",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"00f10b90-94fe-4aad-8f1e-a57976ed45db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Automobili update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nearby-backend.onrender.com/api/v1/category/00f10b90-94fe-4aad-8f1e-a57976ed45db",
+							"protocol": "https",
+							"host": [
+								"nearby-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"00f10b90-94fe-4aad-8f1e-a57976ed45db"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
